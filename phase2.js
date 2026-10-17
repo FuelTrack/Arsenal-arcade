@@ -1,0 +1,8 @@
+/* Arsenal Arcade Phase 2 - tactical configuration data */
+window.ArsenalPhase2={
+formations:{"4-3-3":{DEF:4,MID:3,FWD:3},"4-4-2":{DEF:4,MID:4,FWD:2},"3-5-2":{DEF:3,MID:5,FWD:2},"4-2-3-1":{DEF:4,MID:5,FWD:1}},
+legends:[["David Seaman","GK",92],["Jens Lehmann","GK",88],["Tony Adams","DEF",94],["Sol Campbell","DEF",92],["Ashley Cole","DEF",90],["Lauren","DEF",86],["Kolo Touré","DEF",86],["Lee Dixon","DEF",86],["Patrick Vieira","MID",95],["Gilberto Silva","MID",89],["Cesc Fàbregas","MID",92],["Robert Pirès","MID",91],["Freddie Ljungberg","MID",88],["Santi Cazorla","MID",89],["Mesut Özil","MID",90],["Thierry Henry","FWD",98],["Dennis Bergkamp","FWD",95],["Ian Wright","FWD",93],["Robin van Persie","FWD",91],["Alexis Sánchez","FWD",92],["Theo Walcott","FWD",84]],
+mentalities:{balanced:{attack:0,defence:0},attacking:{attack:.4,defence:-.25},defensive:{attack:-.2,defence:.4}},
+validateXI(roster,indices,formation){const shape=this.formations[formation];if(!shape||indices.length!==11||new Set(indices).size!==11)return false;const counts={GK:0,DEF:0,MID:0,FWD:0};for(const i of indices){const p=roster[i];if(!p||!(p[1] in counts))return false;counts[p[1]]++}return counts.GK===1&&counts.DEF===shape.DEF&&counts.MID===shape.MID&&counts.FWD===shape.FWD},
+makeTimeline(homeGoals,awayGoals,scorers,opponent){const events=[{minute:0,text:"Kick-off"},{minute:45,text:"Half-time team talk"},{minute:90,text:"Full-time"}];for(let i=0;i<homeGoals;i++)events.push({minute:8+Math.floor(Math.random()*80),text:"Arsenal goal - "+scorers[Math.floor(Math.random()*scorers.length)]});for(let i=0;i<awayGoals;i++)events.push({minute:8+Math.floor(Math.random()*80),text:opponent+" goal"});return events.sort((a,b)=>a.minute-b.minute)}
+};
