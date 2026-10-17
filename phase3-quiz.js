@@ -22,7 +22,7 @@ const bank=[
 ['Invincibles','Hard','What was Arsenal’s league record in 2003–04?',['26W 12D 0L','28W 10D 0L','25W 13D 0L','27W 11D 0L'],0],
 ['Cup finals','Easy','Which competition did Arsenal win in 2014 to end a trophy drought?',['League Cup','FA Cup','Champions League','Europa League'],1],
 ['Cup finals','Medium','Who scored Arsenal’s winning goal in the 2017 FA Cup final?',['Aaron Ramsey','Alexis Sánchez','Olivier Giroud','Theo Walcott'],0],
-['Cup finals','Medium','Who scored Arsenal’s extra-time winner in the 2020 FA Cup final?',['Pierre-Emerick Aubameyang','Nicolas Pépé','Alexandre Lacazette','Eddie Nketiah'],0],
+['Cup finals','Medium','Who scored both Arsenal goals in the 2020 FA Cup final?',['Pierre-Emerick Aubameyang','Nicolas Pépé','Alexandre Lacazette','Eddie Nketiah'],0],
 ['Cup finals','Hard','Who scored Arsenal’s winning goal in the 1971 FA Cup final?',['Charlie George','George Graham','Ray Kennedy','John Radford'],0],
 ['Cup finals','Hard','Which team did Arsenal beat in the 2005 FA Cup final?',['Manchester United','Chelsea','Liverpool','Newcastle United'],0]
 ];
