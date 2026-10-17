@@ -4,7 +4,7 @@ const engine=window.ArsenalPhase2;
 if(!engine)return;
 const basePlayers=players.slice();
 const cfg=JSON.parse(localStorage.getItem('arsenalPhase2Config')||'null')||{era:'mixed',formation:'4-3-3',mentality:'balanced'};
-let events=[];
+let events=Array.isArray(season?.lastEvents)?season.lastEvents:[];
 function roster(){return cfg.era==='legends'?engine.legends:basePlayers}
 function persist(){localStorage.setItem('arsenalPhase2Config',JSON.stringify(cfg))}
 function safe(v){return String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;':'&quot;'}[c]))}
@@ -32,11 +32,11 @@ const a=Math.max(0,Math.min(5,Math.floor(Math.random()*3+(rating-82)/11+mood.att
 const b=Math.max(0,Math.min(5,Math.floor(Math.random()*3+(85-rating)/11-mood.defence)));
 const result=a>b?'W':a===b?'D':'L';
 const scorers=[...selected].map(i=>roster()[i]).filter(p=>p[1]!=='GK').map(p=>p[0]);
-events=engine.makeTimeline(a,b,scorers,club);
+events=engine.makeTimeline(a,b,scorers,club);season.lastEvents=events;
 season.played++;season[result.toLowerCase()]++;season.gf+=a;season.ga+=b;
 season.results.push({week:season.played,club,home,a,b,outcome:result});
 saveSeason();render();
 };
-if(season?.played){if(season.era)cfg.era=season.era;if(season.formation)cfg.formation=season.formation;persist()}
+if(season?.played){if(season.era)cfg.era=season.era;if(season.formation)cfg.formation=season.formation;persist();if(!valid()){console.warn('Saved lineup is incompatible with the chosen squad or formation; reset season to select a new XI.')}}
 const css=document.createElement('style');css.textContent='.arcade-tactics{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.arcade-control{display:grid;gap:6px;color:#e4c6d0;font-size:.82rem}.arcade-events{border-left:2px solid #edbd68;padding-left:15px;margin:12px 0}.arcade-events div,.arcade-fixture{padding:9px;border-bottom:1px solid #ffffff20}.arcade-fixture{display:flex;justify-content:space-between;gap:8px}details{margin:18px 0}summary{cursor:pointer;font-weight:700}';document.head.append(css);
 })();
